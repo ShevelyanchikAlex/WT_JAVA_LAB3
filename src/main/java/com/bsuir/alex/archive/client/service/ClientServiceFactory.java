@@ -8,11 +8,11 @@ import com.bsuir.alex.archive.client.service.impl.ClientServiceImpl;
  * @author Alex Shevelyanchik
  * @version 1.0
  */
-public final class ServiceFactory {
+public final class ClientServiceFactory {
     /**
-     * Field instance - instance of {@link ServiceFactory}
+     * Field instance - instance of {@link ClientServiceFactory}
      */
-    private static final ServiceFactory instance = new ServiceFactory();
+    private static final ClientServiceFactory instance = new ClientServiceFactory();
 
     /**
      * Field clientService - {@link ClientServiceImpl}
@@ -20,9 +20,9 @@ public final class ServiceFactory {
     private final ClientService clientService = new ClientServiceImpl();
 
     /**
-     * Private constructor to close the ability of instantiating {@link ServiceFactory}.
+     * Private constructor to close the ability of instantiating {@link ClientServiceFactory}.
      */
-    private ServiceFactory() {
+    private ClientServiceFactory() {
     }
 
     /**
@@ -35,11 +35,11 @@ public final class ServiceFactory {
     }
 
     /**
-     * Gets instance of {@link ServiceFactory}
+     * Gets instance of {@link ClientServiceFactory}
      *
-     * @return {@link ServiceFactory} instance
+     * @return {@link ClientServiceFactory} instance
      */
-    public static ServiceFactory getInstance() {
+    public static ClientServiceFactory getInstance() {
         return instance;
     }
 }

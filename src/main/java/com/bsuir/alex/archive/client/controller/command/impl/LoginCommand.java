@@ -1,15 +1,25 @@
 package com.bsuir.alex.archive.client.controller.command.impl;
 
-import com.bsuir.alex.archive.client.controller.command.Command;
+import com.bsuir.alex.archive.client.controller.command.ClientCommand;
 import com.bsuir.alex.archive.client.service.ClientService;
 import com.bsuir.alex.archive.client.service.ServiceException;
-import com.bsuir.alex.archive.client.service.ServiceFactory;
+import com.bsuir.alex.archive.client.service.ClientServiceFactory;
 
-public class LoginCommand implements Command {
+/**
+ * LoginCommand class
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
+public class LoginCommand implements ClientCommand {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String execute(String request) {
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        ClientServiceFactory serviceFactory = ClientServiceFactory.getInstance();
         ClientService clientService = serviceFactory.getClientService();
+
         String response;
 
         try {
@@ -18,7 +28,6 @@ public class LoginCommand implements Command {
         } catch (ServiceException e) {
             response = e.getMessage();
         }
-
         return response;
     }
 }

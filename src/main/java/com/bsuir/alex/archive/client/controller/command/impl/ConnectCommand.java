@@ -1,20 +1,30 @@
 package com.bsuir.alex.archive.client.controller.command.impl;
 
-import com.bsuir.alex.archive.client.controller.command.Command;
+import com.bsuir.alex.archive.client.controller.command.ClientCommand;
+import com.bsuir.alex.archive.client.controller.constant.ClientControllerConstant;
 import com.bsuir.alex.archive.client.service.ClientService;
 import com.bsuir.alex.archive.client.service.ServiceException;
-import com.bsuir.alex.archive.client.service.ServiceFactory;
+import com.bsuir.alex.archive.client.service.ClientServiceFactory;
 
-public class ConnectCommand implements Command {
+/**
+ * ConnectCommand class
+ *
+ * @author Alex Shevelyanchik
+ * @version 1.0
+ */
+public class ConnectCommand implements ClientCommand {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String execute(String request) {
-        System.out.println("wtf");
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        ClientServiceFactory serviceFactory = ClientServiceFactory.getInstance();
         ClientService clientService = serviceFactory.getClientService();
+
         String response;
 
         try {
-            response = clientService.connect(request) ? "Succes connection" : "bad";
+            response = clientService.connect(request) ? ClientControllerConstant.SUCCESS_CONNECT : ClientControllerConstant.BAD_CONNECT;
         } catch (ServiceException e) {
             response = e.getMessage();
         }
